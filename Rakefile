@@ -27,6 +27,13 @@ task :gem do
   end
 end
 
+desc "Release gems into geminabox"
+task :inabox => :gem do
+  gems.each do |dir|
+    Dir.chdir(dir) { sh "gem inabox" }
+  end
+end
+
 desc "Install the chef gems"
 task :install do
   gems.each do |dir|
